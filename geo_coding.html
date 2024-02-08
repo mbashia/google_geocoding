@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
- 
+
+</head>
 <body onload="initialize()">
 
     <div id="map" style="width: 320px; height: 480px;"></div>
@@ -31,9 +32,16 @@
           geocoder.geocode( { 'address': address}, function(results, status) {
             if (status == 'OK') {
               map.setCenter(results[0].geometry.location);
+              var carIcon = {
+  url: 'car.png', // path to your car icon image
+  scaledSize: new google.maps.Size(50, 50), // size of the image
+  // other options like origin and anchor if needed
+};
+
               var marker = new google.maps.Marker({
                   map: map,
-                  position: results[0].geometry.location
+                  position: results[0].geometry.location,
+                  icon: carIcon
               });
             } else {
               alert('Geocode was not successful for the following reason: ' + status);
